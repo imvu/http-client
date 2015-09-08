@@ -32,7 +32,7 @@ spec = describe "streamFile" $ it "works" $ withTmpFile $ \(path, h) -> do
         openBinaryTempFile tmp "request-body-stream-file"
     closeTmpFile (_, h) = hClose h
 
-    firstReadBS = "GET / HTTP/1.1\r\nHost: example.com\r\nAccept-Encoding: gzip\r\nContent-Length: 75000\r\n\r\n"
+    firstReadBS = "GET / HTTP/1.1\r\nHost:example.com\r\nAccept-Encoding:gzip\r\nContent-Length:75000\r\n\r\n"
 
     verifyFileConnection h = do
         (conn, _, _) <- dummyConnection []

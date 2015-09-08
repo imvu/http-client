@@ -450,7 +450,7 @@ requestBuilder req Connection {..}
 
     headerPairToBuilder (k, v) =
            fromByteString (CI.original k)
-        <> fromByteString ": "
+        <> fromByteString ":"
         <> fromByteString v
         <> fromByteString "\r\n"
 

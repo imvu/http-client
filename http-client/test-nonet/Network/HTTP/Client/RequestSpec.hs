@@ -102,15 +102,15 @@ spec = do
                , [chunked <> "\r\n", "", "4\r\ndata\r\n","0\r\n\r\n"]
                ]
 
-        out2 = [ (nonChunked <> "Expect: 100-continue\r\n\r\n", ["data"])
-               , (nonChunked <> "Expect: 100-continue\r\n\r\n", ["data"])
-               , (nonChunked <> "Expect: 100-continue\r\n\r\n", ["data"])
-               , (nonChunked <> "Expect: 100-continue\r\n\r\n", ["data"])
-               , (chunked    <> "Expect: 100-continue\r\n\r\n", ["4\r\ndata\r\n","0\r\n\r\n"])
+        out2 = [ (nonChunked <> "Expect:100-continue\r\n\r\n", ["data"])
+               , (nonChunked <> "Expect:100-continue\r\n\r\n", ["data"])
+               , (nonChunked <> "Expect:100-continue\r\n\r\n", ["data"])
+               , (nonChunked <> "Expect:100-continue\r\n\r\n", ["data"])
+               , (chunked    <> "Expect:100-continue\r\n\r\n", ["4\r\ndata\r\n","0\r\n\r\n"])
                ]
 
-        nonChunked = "PUT /foo HTTP/1.1\r\nHost: localhost\r\nAccept-Encoding: gzip\r\nContent-Length: 4\r\n"
-        chunked    = "PUT /foo HTTP/1.1\r\nHost: localhost\r\nAccept-Encoding: gzip\r\nTransfer-Encoding: chunked\r\n"
+        nonChunked = "PUT /foo HTTP/1.1\r\nHost:localhost\r\nAccept-Encoding:gzip\r\nContent-Length:4\r\n"
+        chunked    = "PUT /foo HTTP/1.1\r\nHost:localhost\r\nAccept-Encoding:gzip\r\nTransfer-Encoding:chunked\r\n"
 
         popper dat = do
             r <- newIORef dat
